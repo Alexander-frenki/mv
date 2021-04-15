@@ -997,7 +997,7 @@ button:hover {
   cursor: pointer;
 }
 .gallery_category_item_img img {
-  align-self: auto;
+  align-self: center;
 }
 @media (max-width: 576px) {
   .gallery_category_item_img {

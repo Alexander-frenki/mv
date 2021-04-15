@@ -117,6 +117,7 @@ function activateSlider(index) {
 
 $(document).ready(function(){
   $(SLIDER_SELECTOR).slick({
+    draggable: false,
     prevArrow:"<button type='button' class='slick-prev pull-left'><svg width='30' height='22' viewBox='0 0 30 22' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9 21L1 11m0 0L9 1M1 11h28' stroke='#fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></button>",
     nextArrow:'<button type="button" class="slick-next pull-right"><svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 1l8 10m0 0l-8 10m8-10H1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
   });
