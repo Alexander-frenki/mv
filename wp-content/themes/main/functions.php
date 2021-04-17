@@ -23,7 +23,7 @@ function main_scripts() {
   get_template_directory_uri() . '/prod/index.css');
 
   wp_enqueue_script('main-scripts',
-  get_template_directory_uri() . '/prod/index.js', [], '', true);
+  get_template_directory_uri() . '/prod/index.js', [], '1', true);
 }
 
 
