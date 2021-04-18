@@ -3,6 +3,7 @@
   &_video {
     position: relative;
     height: calc(100vh - 72px);
+    min-height: 500px;
     margin-bottom: 90px;
 
     &_headline {
@@ -19,7 +20,7 @@
       z-index: 1;
 
       &.showed {
-        animation: showItem 1s 0.5s ease both;
+        animation: animateHeadline 3.5s 0.5s ease both;
       }
 
       @include for-tablet {
@@ -32,6 +33,12 @@
         margin: 40px auto 0;
         font-size: 40px;
         line-height: 48px;
+      }
+
+      @media screen and (max-width: 370px) {
+        padding: 0 20px;
+        font-size: 34px;
+        line-height: 40px;
       }
     }
 
@@ -50,11 +57,12 @@
         display: block;
         object-fit: cover;
         opacity: 0.3;
+        pointer-events: none;
       }
-    }
 
-    @media only screen and (max-height: 800px) {
-      height: 800px;
+      video::-webkit-media-controls-overlay-play-button {
+        display: none;
+      }
     }
 
     @include for-tablet {
@@ -112,6 +120,12 @@
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
+
+    &:not(.showed) {
+      > * {
+        opacity: 0;
+      }
+    }
 
     &.showed {
       > * {
@@ -200,5 +214,23 @@
     @include for-tablet {
       margin-bottom: 80px;
     }
+  }
+}
+
+
+@keyframes animateHeadline {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }

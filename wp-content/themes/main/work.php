@@ -51,6 +51,7 @@ $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish
                 $tags = array_map(function($tag) {
                   return $tag -> name;
                 }, get_the_tags());
+
                 $isAvailableClass = in_array('available', $tags) ? 'available' : '';
                 $isAvailableTitle = in_array('available', $tags) ? 'Available' : 'Not available';
 
@@ -71,9 +72,12 @@ $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish
                     <div class="gallery_category_item_text">
                       <?php the_excerpt(); ?>
                     </div>
-                    <div class="gallery_category_item_status <?= $isAvailableClass; ?>">
-                      <span><?= $isAvailableTitle ?></span>
-                    </div>
+                    <?php if (in_array('available', $tags) or in_array('not-available', $tags)) {
+                      echo '<div class="gallery_category_item_status '. $isAvailableClass .'">
+                              <span>'. $isAvailableTitle .'</span>
+                            </div>';
+                    }; ?>
+
                   </div>
                 </div>
               </div>
@@ -106,7 +110,11 @@ $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish
               </div>
               <div class="gallery_slider_item_additional">
                 <button class="slick-clone-btn clone-arrow-prev"><svg width='30' height='22' viewBox='0 0 30 22' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9 21L1 11m0 0L9 1M1 11h28' stroke='#fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></button>
-                <span class="gallery_slider_item_status"><?= $isAvailableTitle ?></span>
+
+                <?php if (in_array('available', $tags) or in_array('not-available', $tags)) {
+                  echo '<span class="gallery_slider_item_status">'. $isAvailableTitle .'</span>';
+                }; ?>
+
                 <button class="slick-clone-btn clone-arrow-next"><svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 1l8 10m0 0l-8 10m8-10H1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
               </div>
             </div>

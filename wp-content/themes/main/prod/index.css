@@ -729,13 +729,7 @@ button:hover {
 }
 
 .categories {
-  height: calc(100vh - 72px);
-  min-height: 700px;
-}
-@media (max-width: 992px) {
-  .categories {
-    height: calc(100vh - 62px);
-  }
+  padding: 180px 0;
 }
 @media (max-width: 576px) {
   .categories {
@@ -757,8 +751,8 @@ button:hover {
 }
 .categories_hover_img {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   z-index: -1;
   transition: all 0.65s linear;
 }
@@ -1270,6 +1264,7 @@ button:hover {
 .about_video {
   position: relative;
   height: calc(100vh - 72px);
+  min-height: 500px;
   margin-bottom: 90px;
 }
 .about_video_headline {
@@ -1286,7 +1281,7 @@ button:hover {
   z-index: 1;
 }
 .about_video_headline.showed {
-  animation: showItem 1s 0.5s ease both;
+  animation: animateHeadline 3.5s 0.5s ease both;
 }
 @media (max-width: 992px) {
   .about_video_headline {
@@ -1300,6 +1295,13 @@ button:hover {
     margin: 40px auto 0;
     font-size: 40px;
     line-height: 48px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .about_video_headline {
+    padding: 0 20px;
+    font-size: 34px;
+    line-height: 40px;
   }
 }
 .about_video_wrapper {
@@ -1317,11 +1319,10 @@ button:hover {
   display: block;
   object-fit: cover;
   opacity: 0.3;
+  pointer-events: none;
 }
-@media only screen and (max-height: 800px) {
-  .about_video {
-    height: 800px;
-  }
+.about_video_wrapper video::-webkit-media-controls-overlay-play-button {
+  display: none;
 }
 @media (max-width: 992px) {
   .about_video {
@@ -1398,6 +1399,9 @@ button:hover {
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
+}
+.about_statistics:not(.showed) > * {
+  opacity: 0;
 }
 .about_statistics.showed > * {
   animation: showItem 1s 0.5s ease both;
@@ -1505,6 +1509,20 @@ button:hover {
   }
 }
 
+@keyframes animateHeadline {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
 .contacts {
   max-width: 1700px;
   margin: 0 auto;
@@ -1556,6 +1574,7 @@ button:hover {
   font-size: 50px;
   line-height: 60px;
   margin-bottom: 20px;
+  padding-left: 3px;
 }
 @media (max-width: 576px) {
   .contacts_info h4 {

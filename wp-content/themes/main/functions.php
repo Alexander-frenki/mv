@@ -20,10 +20,10 @@ function theme_register_social_menu() {
 
 function main_scripts() {
   wp_enqueue_style('main-style',
-  get_template_directory_uri() . '/prod/index.css');
+  get_template_directory_uri() . '/prod/index.css', [], '2', false);
 
   wp_enqueue_script('main-scripts',
-  get_template_directory_uri() . '/prod/index.js', [], '1', true);
+  get_template_directory_uri() . '/prod/index.js', [], '2', true);
 }
 
 

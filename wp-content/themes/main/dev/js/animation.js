@@ -12,12 +12,10 @@ function checkIsVisible() {
 }
 
 const windowHeight = window.innerHeight;
-const windowWidth = window.innerWidth;
-const separator = windowWidth < 576 ? 1.5 : 1.1;
 
 function isVisible(el) {
-  const elHeight = el.offsetTop + el.offsetHeight;
-  if (document.documentElement.scrollTop + windowHeight >= elHeight / separator) {
+  const elHeight = el.offsetHeight;
+  if (document.documentElement.scrollTop + windowHeight >= (elHeight * 0.3) + el.offsetTop) {
     el.classList.add('showed');
   }
 }
