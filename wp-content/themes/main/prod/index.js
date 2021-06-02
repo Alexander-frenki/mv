@@ -786,7 +786,7 @@ var windowHeight = window.innerHeight;
 function isVisible(el) {
   var elHeight = el.offsetHeight;
 
-  if (document.documentElement.scrollTop + windowHeight >= elHeight * 0.3 + el.offsetTop) {
+  if (document.documentElement.scrollTop + windowHeight >= elHeight * 0.15 + el.offsetTop - (window.innerWidth >= 1024 ? 72 : 0)) {
     el.classList.add('showed');
   }
 }
@@ -836,7 +836,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64084" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60353" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

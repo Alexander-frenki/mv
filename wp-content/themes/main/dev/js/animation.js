@@ -15,7 +15,7 @@ const windowHeight = window.innerHeight;
 
 function isVisible(el) {
   const elHeight = el.offsetHeight;
-  if (document.documentElement.scrollTop + windowHeight >= (elHeight * 0.3) + el.offsetTop) {
+  if (document.documentElement.scrollTop + windowHeight >= (elHeight * 0.15) + el.offsetTop - (window.innerWidth >= 1024 ? 72 : 0)) {
     el.classList.add('showed');
   }
 }

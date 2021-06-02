@@ -20,10 +20,10 @@ function theme_register_social_menu() {
 
 function main_scripts() {
   wp_enqueue_style('main-style',
-  get_template_directory_uri() . '/prod/index.css', [], '2', false);
+  get_template_directory_uri() . '/prod/index.css', [], '2.6', false);
 
   wp_enqueue_script('main-scripts',
-  get_template_directory_uri() . '/prod/index.js', [], '2', true);
+  get_template_directory_uri() . '/prod/index.js', [], '2.6', true);
 }
 
 
@@ -71,7 +71,7 @@ class About_Page_Widget extends WP_Widget {
     <div class="about_video">
       <h2 class="about_video_headline scroll_animate">'. $instance['title'] .'</h2>
       <div class="about_video_wrapper">
-        <video muted autoplay src="'. $instance['video_uri'] .'"></video>
+        <video muted autoplay playsinline src="'. $instance['video_uri'] .'"></video>
       </div>
     </div>
 
