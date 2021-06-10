@@ -4,6 +4,7 @@ import './js/header';
 import './js/gallery';
 import './js/categories';
 import './js/animation';
+import './js/about';
 
 document.addEventListener( 'wpcf7mailsent', () => {
   document.querySelector('.contacts_form_thanks').classList.add('active');

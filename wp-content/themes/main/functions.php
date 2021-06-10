@@ -20,10 +20,10 @@ function theme_register_social_menu() {
 
 function main_scripts() {
   wp_enqueue_style('main-style',
-  get_template_directory_uri() . '/prod/index.css', [], '2.6', false);
+  get_template_directory_uri() . '/prod/index.css', [], '2.7', false);
 
   wp_enqueue_script('main-scripts',
-  get_template_directory_uri() . '/prod/index.js', [], '2.6', true);
+  get_template_directory_uri() . '/prod/index.js', [], '2.7', true);
 }
 
 
@@ -70,8 +70,8 @@ class About_Page_Widget extends WP_Widget {
 		echo '<section class="about">
     <div class="about_video">
       <h2 class="about_video_headline scroll_animate">'. $instance['title'] .'</h2>
-      <div class="about_video_wrapper">
-        <video muted autoplay playsinline src="'. $instance['video_uri'] .'"></video>
+      <div class="about_video_wrapper" data-video="'. $instance['video_uri'] .'" data-mobile-video="'. $instance['video_uri_mobile'] .'">
+        <div></div>
       </div>
     </div>
 
@@ -101,6 +101,7 @@ class About_Page_Widget extends WP_Widget {
 	public function form($instance) {
 		$title = !empty($instance['title']) ? $instance['title'] : '';
     $video_uri = !empty($instance['video_uri']) ? $instance['video_uri'] : '';
+    $video_uri_mobile = !empty($instance['video_uri_mobile']) ? $instance['video_uri_mobile'] : '';
 
 		?>
 		<p>
@@ -112,6 +113,11 @@ class About_Page_Widget extends WP_Widget {
       <input type="text" class="widefat <?= $this -> id ?>_url" name="<?= $this -> get_field_name( 'video_uri' ); ?>" value="<?= $instance['video_uri'] ?? ''; ?>" style="margin-top:5px;" />
       <input type="button" id="<?= $this -> id ?>" class="button button-primary js_custom_upload_media" value="Upload Video" style="margin-top:5px;" />
     </p>
+    <p>
+      <label for="<?= $this -> get_field_id('video_uri_mobile'); ?>">Mobile video</label>
+      <input type="text" class="widefat <?= $this -> id ?>_url" name="<?= $this -> get_field_name( 'video_uri_mobile' ); ?>" value="<?= $instance['video_uri_mobile'] ?? ''; ?>" style="margin-top:5px;" />
+      <input type="button" id="<?= $this -> id ?>" class="button button-primary js_custom_upload_media" value="Upload Video" style="margin-top:5px;" />
+    </p>
 		<?php 
 	}
 
@@ -119,6 +125,7 @@ class About_Page_Widget extends WP_Widget {
 		$instance = array();
     $instance['title'] = strip_tags( $new_instance['title'] );
     $instance['video_uri'] = strip_tags( $new_instance['video_uri'] );
+    $instance['video_uri_mobile'] = strip_tags( $new_instance['video_uri_mobile'] );
 
 		return $instance;
 	}
