@@ -801,13 +801,20 @@ if (videoWrapper) {
 
 function getVideoSrc() {
   var isMobileSize = windowWidth <= 992;
-  return isMobileSize ? videoWrapper.dataset.mobileVideo : videoWrapper.dataset.video;
+  var src = isMobileSize ? videoWrapper.dataset.mobileVideo : videoWrapper.dataset.video;
+  var className = isMobileSize ? 'video-mobile' : 'video-desktop';
+  return {
+    src: src,
+    className: className
+  };
 }
 
 ;
 
-function appendVideo(src) {
-  var video = "<video playsinline muted autoplay src='".concat(src, "'></video>");
+function appendVideo(_ref) {
+  var src = _ref.src,
+      className = _ref.className;
+  var video = "<video class='".concat(className, "' playsinline muted autoplay src='").concat(src, "'></video>");
   videoWrapper.children[0].outerHTML = video;
 }
 
@@ -860,7 +867,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58116" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54972" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

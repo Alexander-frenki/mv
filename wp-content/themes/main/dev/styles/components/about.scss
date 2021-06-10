@@ -57,6 +57,10 @@
         object-position: top;
         opacity: 0.7;
         pointer-events: none;
+
+        &.video-mobile {
+          object-position: center;
+        }
       }
 
       video::-webkit-media-controls-overlay-play-button {

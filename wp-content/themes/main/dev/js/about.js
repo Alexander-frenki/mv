@@ -8,10 +8,12 @@ if (videoWrapper) {
 
 function getVideoSrc() {
   const isMobileSize = windowWidth <= 992;
-  return isMobileSize ? videoWrapper.dataset.mobileVideo : videoWrapper.dataset.video;
+  const src = isMobileSize ? videoWrapper.dataset.mobileVideo : videoWrapper.dataset.video;
+  const className = isMobileSize ? 'video-mobile' : 'video-desktop';
+  return { src, className };
 };
 
-function appendVideo(src) {
-  const video = `<video playsinline muted autoplay src='${src}'></video>`;
+function appendVideo({ src, className }) {
+  const video = `<video class='${className}' playsinline muted autoplay src='${src}'></video>`;
   videoWrapper.children[0].outerHTML = video;
 };

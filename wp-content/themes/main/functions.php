@@ -20,10 +20,10 @@ function theme_register_social_menu() {
 
 function main_scripts() {
   wp_enqueue_style('main-style',
-  get_template_directory_uri() . '/prod/index.css', [], '2.7', false);
+  get_template_directory_uri() . '/prod/index.css', [], '2.8', false);
 
   wp_enqueue_script('main-scripts',
-  get_template_directory_uri() . '/prod/index.js', [], '2.7', true);
+  get_template_directory_uri() . '/prod/index.js', [], '2.8', true);
 }
 
 
@@ -110,13 +110,13 @@ class About_Page_Widget extends WP_Widget {
 		</p>
     <p>
       <label for="<?= $this -> get_field_id('video_uri'); ?>">Video</label>
-      <input type="text" class="widefat <?= $this -> id ?>_url" name="<?= $this -> get_field_name( 'video_uri' ); ?>" value="<?= $instance['video_uri'] ?? ''; ?>" style="margin-top:5px;" />
-      <input type="button" id="<?= $this -> id ?>" class="button button-primary js_custom_upload_media" value="Upload Video" style="margin-top:5px;" />
+      <input type="text" class="widefat <?= $this -> id ?>video_uri_url" name="<?= $this -> get_field_name( 'video_uri' ); ?>" value="<?= $instance['video_uri'] ?? ''; ?>" style="margin-top:5px;" />
+      <input type="button" id="<?= $this -> id . 'video_uri' ?>" class="button button-primary js_custom_upload_media" value="Upload Video" style="margin-top:5px;" />
     </p>
     <p>
       <label for="<?= $this -> get_field_id('video_uri_mobile'); ?>">Mobile video</label>
-      <input type="text" class="widefat <?= $this -> id ?>_url" name="<?= $this -> get_field_name( 'video_uri_mobile' ); ?>" value="<?= $instance['video_uri_mobile'] ?? ''; ?>" style="margin-top:5px;" />
-      <input type="button" id="<?= $this -> id ?>" class="button button-primary js_custom_upload_media" value="Upload Video" style="margin-top:5px;" />
+      <input type="text" class="widefat <?= $this -> id ?>video_uri_mobile_url" name="<?= $this -> get_field_name( 'video_uri_mobile' ); ?>" value="<?= $instance['video_uri_mobile'] ?? ''; ?>" style="margin-top:5px;" />
+      <input type="button" id="<?= $this -> id . 'video_uri_mobile' ?>" class="button button-primary js_custom_upload_media" value="Upload Video" style="margin-top:5px;" />
     </p>
 		<?php 
 	}

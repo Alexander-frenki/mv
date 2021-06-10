@@ -1320,6 +1320,9 @@ button:hover {
   opacity: 0.7;
   pointer-events: none;
 }
+.about_video_wrapper video.video-mobile {
+  object-position: center;
+}
 .about_video_wrapper video::-webkit-media-controls-overlay-play-button {
   display: none;
 }
